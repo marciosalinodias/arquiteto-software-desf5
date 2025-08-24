@@ -7,6 +7,9 @@ const morgan = require('morgan');
 // Importar Prisma Client
 const prisma = require('./utils/prisma');
 
+// Importar rotas
+const routes = require('./routes');
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 const NODE_ENV = process.env.NODE_ENV || 'development';
@@ -18,22 +21,26 @@ app.use(morgan('combined')); // Logging
 app.use(express.json()); // Parse JSON
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded
 
-// Rota de teste
+// Rota de teste (raiz)
 app.get('/', (req, res) => {
   res.json({
     message: 'API REST MVC - Clientes, Produtos e Pedidos',
     version: '1.0.0',
-    status: 'running'
+    status: 'running',
+    documentation: '/api/v1'
   });
 });
 
-// Rota de health check
+// Rota de health check (raiz)
 app.get('/health', (req, res) => {
   res.json({
     status: 'OK',
     timestamp: new Date().toISOString()
   });
 });
+
+// Usar rotas da API
+app.use(routes);
 
 // Middleware de tratamento de erros
 app.use((err, req, res, next) => {
@@ -57,8 +64,13 @@ app.listen(PORT, () => {
   console.log(`🚀 Servidor rodando na porta ${PORT}`);
   console.log(`🌍 Ambiente: ${NODE_ENV}`);
   console.log(`📡 API disponível em: http://localhost:${PORT}`);
+  console.log(`📚 Documentação: http://localhost:${PORT}/api/v1`);
   console.log(`🏥 Health check: http://localhost:${PORT}/health`);
   console.log(`🔄 Nodemon configurado - reiniciando automaticamente`);
+  console.log(`\n📋 Endpoints disponíveis:`);
+  console.log(`   👥 Clientes: http://localhost:${PORT}/api/v1/clientes`);
+  console.log(`   📦 Produtos: http://localhost:${PORT}/api/v1/produtos`);
+  console.log(`   🛒 Pedidos: http://localhost:${PORT}/api/v1/pedidos`);
 });
 
 module.exports = app;

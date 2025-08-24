@@ -35,11 +35,11 @@ Desenvolver uma API REST seguindo padrão MVC para expor dados de Cliente/Produt
 - [x] **T1.8** - Configurar Zod para validação ✅ **CONCLUÍDA**
 
 ### **FASE 2: Estrutura MVC**
-- [ ] **T2.1** - Criar pasta `models/` e definir entidades (Cliente, Produto, Pedido)
-- [ ] **T2.2** - Criar pasta `controllers/` e controllers base
-- [ ] **T2.3** - Criar pasta `services/` e services base
-- [ ] **T2.4** - Criar pasta `routes/` e configuração de rotas
-- [ ] **T2.5** - Testar estrutura MVC funcionando
+- [x] **T2.1** - Criar pasta `models/` e definir entidades (Cliente, Produto, Pedido) ✅ **CONCLUÍDA**
+- [x] **T2.2** - Criar pasta `controllers/` e controllers base ✅ **CONCLUÍDA**
+- [x] **T2.3** - Criar pasta `services/` e services base ✅ **CONCLUÍDA**
+- [x] **T2.4** - Criar pasta `routes/` e configuração de rotas ✅ **CONCLUÍDA**
+- [x] **T2.5** - Testar estrutura MVC funcionando ✅ **CONCLUÍDA**
 
 ### **FASE 3: Implementação dos Models**
 - [ ] **T3.1** - Definir schema Prisma (Cliente, Produto, Pedido)
@@ -94,15 +94,16 @@ Desenvolver uma API REST seguindo padrão MVC para expor dados de Cliente/Produt
 1. ✅ **Escolher Stack Tecnológica** (T1.1) - **NODE.JS/EXPRESS**
 2. ✅ **Definir Entidades** - **CLIENTE, PRODUTO, PEDIDO**
 3. ✅ **Setup Inicial Completo** (T1.2 - T1.5)
-4. **Começar Estrutura MVC** (T2.1 - T2.5)
+4. ✅ **Estrutura MVC Completa** (T2.1 - T2.5) - **CONCLUÍDA**
+5. **Implementar Models** (T3.1 - T3.6)
 
 ---
 
 ## 📊 Progresso
 - **Total de Tarefas:** 33
-- **Concluídas:** 8
-- **Pendentes:** 25
-- **Progresso:** 24%
+- **Concluídas:** 13
+- **Pendentes:** 20
+- **Progresso:** 39%
 
 ---
 
