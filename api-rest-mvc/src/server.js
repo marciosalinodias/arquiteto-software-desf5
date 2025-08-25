@@ -88,19 +88,21 @@ app.use('*', (req, res) => {
   });
 });
 
-// Iniciar servidor
-app.listen(PORT, () => {
-  console.log(`🚀 Servidor rodando na porta ${PORT}`);
-  console.log(`🌍 Ambiente: ${NODE_ENV}`);
-  console.log(`📡 API disponível em: http://localhost:${PORT}`);
-  console.log(`📚 Documentação: http://localhost:${PORT}/api/v1`);
-  console.log(`📖 Swagger UI: http://localhost:${PORT}/api-docs`);
-  console.log(`🏥 Health check: http://localhost:${PORT}/health`);
-  console.log(`🔄 Nodemon configurado - reiniciando automaticamente`);
-  console.log(`\n📋 Endpoints disponíveis:`);
-  console.log(`   👥 Clientes: http://localhost:${PORT}/api/v1/clientes`);
-  console.log(`   📦 Produtos: http://localhost:${PORT}/api/v1/produtos`);
-  console.log(`   🛒 Pedidos: http://localhost:${PORT}/api/v1/pedidos`);
-});
+// Iniciar servidor apenas se não estiver na Vercel
+if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`🚀 Servidor rodando na porta ${PORT}`);
+    console.log(`🌍 Ambiente: ${NODE_ENV}`);
+    console.log(`📡 API disponível em: http://localhost:${PORT}`);
+    console.log(`📚 Documentação: http://localhost:${PORT}/api/v1`);
+    console.log(`📖 Swagger UI: http://localhost:${PORT}/api-docs`);
+    console.log(`🏥 Health check: http://localhost:${PORT}/health`);
+    console.log(`🔄 Nodemon configurado - reiniciando automaticamente`);
+    console.log(`\n📋 Endpoints disponíveis:`);
+    console.log(`   👥 Clientes: http://localhost:${PORT}/api/v1/clientes`);
+    console.log(`   📦 Produtos: http://localhost:${PORT}/api/v1/produtos`);
+    console.log(`   🛒 Pedidos: http://localhost:${PORT}/api/v1/pedidos`);
+  });
+}
 
 module.exports = app;

@@ -72,6 +72,15 @@ cd api-rest-mvc
 npm install
 ```
 
+## 🚀 Deploy na Vercel
+
+Para fazer deploy na Vercel, consulte o [Guia de Deploy](./DEPLOY.md).
+
+### **Deploy Rápido:**
+1. Conecte seu repositório na Vercel
+2. Configure as variáveis de ambiente
+3. Deploy automático a cada push
+
 ## ⚙️ Configuração
 
 ### **1. Variáveis de Ambiente:**

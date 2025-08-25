@@ -23,8 +23,8 @@ const options = {
         description: 'Servidor de Desenvolvimento'
       },
       {
-        url: 'https://api.exemplo.com/api/v1',
-        description: 'Servidor de Produção'
+        url: process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}/api/v1` : 'https://api.exemplo.com/api/v1',
+        description: 'Servidor de Produção (Vercel)'
       }
     ],
     components: {

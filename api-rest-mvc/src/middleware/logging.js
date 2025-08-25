@@ -43,16 +43,27 @@ const formatLog = (req, res, duration, error = null) => {
 
 // Função para escrever log em arquivo
 const writeToFile = (logMessage) => {
-  const logDir = path.join(__dirname, '../../logs');
-  const logFile = path.join(logDir, `api-${new Date().toISOString().split('T')[0]}.log`);
+  // Na Vercel, não podemos escrever arquivos no sistema de arquivos
+  // Apenas log no console
+  console.log(`[FILE LOG] ${logMessage}`);
   
-  // Criar diretório de logs se não existir
-  if (!fs.existsSync(logDir)) {
-    fs.mkdirSync(logDir, { recursive: true });
+  // Em ambiente local, podemos escrever arquivos
+  if (process.env.NODE_ENV === 'development' && !process.env.VERCEL) {
+    try {
+      const logDir = path.join(__dirname, '../../logs');
+      const logFile = path.join(logDir, `api-${new Date().toISOString().split('T')[0]}.log`);
+      
+      // Criar diretório de logs se não existir
+      if (!fs.existsSync(logDir)) {
+        fs.mkdirSync(logDir, { recursive: true });
+      }
+      
+      // Escrever log no arquivo
+      fs.appendFileSync(logFile, logMessage + '\n');
+    } catch (error) {
+      console.error('Erro ao escrever log em arquivo:', error.message);
+    }
   }
-  
-  // Escrever log no arquivo
-  fs.appendFileSync(logFile, logMessage + '\n');
 };
 
 // Middleware de logging
@@ -71,10 +82,8 @@ const loggingMiddleware = (req, res, next) => {
     // Log no console
     console.log(`📤 ${req.method} ${req.originalUrl} - ${res.statusCode} - ${duration}`);
     
-    // Log em arquivo (apenas em produção)
-    if (process.env.NODE_ENV === 'production') {
-      writeToFile(logMessage);
-    }
+    // Log em arquivo (apenas em desenvolvimento local)
+    writeToFile(logMessage);
     
     // Chamar o método original
     originalSend.call(this, data);
@@ -89,10 +98,8 @@ const loggingMiddleware = (req, res, next) => {
     // Log no console
     console.log(`📤 ${req.method} ${req.originalUrl} - ${res.statusCode} - ${duration}`);
     
-    // Log em arquivo (apenas em produção)
-    if (process.env.NODE_ENV === 'production') {
-      writeToFile(logMessage);
-    }
+    // Log em arquivo (apenas em desenvolvimento local)
+    writeToFile(logMessage);
     
     // Chamar o método original
     originalJson.call(this, data);
@@ -110,10 +117,8 @@ const errorLoggingMiddleware = (err, req, res, next) => {
   console.error(`❌ ${req.method} ${req.originalUrl} - ERROR: ${err.message}`);
   console.error(err.stack);
   
-  // Log em arquivo (apenas em produção)
-  if (process.env.NODE_ENV === 'production') {
-    writeToFile(logMessage);
-  }
+  // Log em arquivo (apenas em desenvolvimento local)
+  writeToFile(logMessage);
   
   next(err);
 };
