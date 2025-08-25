@@ -6,8 +6,8 @@ const { z } = require('zod');
 
 const router = express.Router();
 
-// Instância do controller
-const controller = new produtoController();
+// Usar a instância já criada
+const controller = produtoController;
 
 // Schema para atualização de estoque
 const estoqueSchema = z.object({

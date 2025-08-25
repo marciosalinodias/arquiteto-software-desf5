@@ -8,9 +8,9 @@ const options = {
       version: '1.0.0',
       description: 'API REST completa desenvolvida com Node.js, Express e Prisma, seguindo o padrão arquitetural MVC para gerenciamento de clientes, produtos e pedidos.',
       contact: {
-        name: 'Suporte API',
-        email: 'suporte@api.com',
-        url: 'https://github.com/user/api-rest-mvc'
+        name: 'Marcio Dias',
+        email: 'marciosalinodias@gmail.com',
+        url: 'https://github.com/marciosalinodias'
       },
       license: {
         name: 'MIT',

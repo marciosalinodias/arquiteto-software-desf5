@@ -5,8 +5,8 @@ const { validateId, validateQuery, clienteQuerySchema } = require('../middleware
 
 const router = express.Router();
 
-// Instância do controller
-const controller = new clienteController();
+// Usar a instância já criada
+const controller = clienteController;
 
 // Rotas CRUD básicas
 router.get('/', validateQuery(clienteQuerySchema), controller.getAll.bind(controller));
