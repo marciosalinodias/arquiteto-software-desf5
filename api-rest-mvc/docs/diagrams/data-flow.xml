@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2024-01-15T10:30:00.000Z" agent="5.0" etag="ghi789" version="22.1.16" type="device">
+  <diagram name="Data Flow" id="data-flow">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Title -->
+        <mxCell id="title" value="&lt;b&gt;Fluxo de Dados - Requisição POST /api/v1/clientes&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="20" width="400" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Client -->
+        <mxCell id="client" value="&lt;b&gt;CLIENTE&lt;/b&gt;&lt;br&gt;(Frontend/Mobile)&lt;br&gt;&lt;br&gt;POST /api/v1/clientes&lt;br&gt;{&quot;nome&quot;: &quot;João&quot;,&lt;br&gt; &quot;email&quot;: &quot;joao@email.com&quot;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="140" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- Step 1: Security Middlewares -->
+        <mxCell id="step1" value="&lt;b&gt;1. MIDDLEWARES DE SEGURANÇA&lt;/b&gt;&lt;br&gt;• CORS - Verifica origem&lt;br&gt;• Helmet - Headers de segurança&lt;br&gt;• Rate Limiting - Controle de requisições&lt;br&gt;• Payload Size - Tamanho do body&lt;br&gt;• Sanitize Input - Remove XSS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="220" y="80" width="160" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- Step 2: Processing Middlewares -->
+        <mxCell id="step2" value="&lt;b&gt;2. MIDDLEWARES DE PROCESSAMENTO&lt;/b&gt;&lt;br&gt;• Morgan - Log da requisição&lt;br&gt;• express.json() - Parse do JSON&lt;br&gt;• Validation - Validação Zod&lt;br&gt;• Sanitization - Limpeza de dados" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="420" y="80" width="160" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- Step 3: Route Handler -->
+        <mxCell id="step3" value="&lt;b&gt;3. ROUTE HANDLER&lt;/b&gt;&lt;br&gt;router.post('/clientes',&lt;br&gt;  validate(clienteSchema),&lt;br&gt;  clienteController.create)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="620" y="80" width="160" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- Step 4: Controller -->
+        <mxCell id="step4" value="&lt;b&gt;4. CONTROLLER&lt;/b&gt;&lt;br&gt;ClienteController.create(req, res) {&lt;br&gt;  const result = await&lt;br&gt;    clienteService.createCliente(req.body);&lt;br&gt;  res.status(201).json(result);&lt;br&gt;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="40" y="240" width="160" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- Step 5: Service -->
+        <mxCell id="step5" value="&lt;b&gt;5. SERVICE (LÓGICA DE NEGÓCIO)&lt;/b&gt;&lt;br&gt;ClienteService.createCliente(data) {&lt;br&gt;  if (await this.emailExists(data.email)) {&lt;br&gt;    throw new AppError('Email já cadastrado');&lt;br&gt;  }&lt;br&gt;  return await clienteModel.create(data);&lt;br&gt;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="240" y="240" width="160" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- Step 6: Model -->
+        <mxCell id="step6" value="&lt;b&gt;6. MODEL (ACESSO A DADOS)&lt;/b&gt;&lt;br&gt;ClienteModel.create(data) {&lt;br&gt;  return await prisma.cliente.create({&lt;br&gt;    data: {&lt;br&gt;      nome: data.nome,&lt;br&gt;      email: data.email,&lt;br&gt;      telefone: data.telefone,&lt;br&gt;      endereco: data.endereco&lt;br&gt;    }&lt;br&gt;  });&lt;br&gt;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="440" y="240" width="160" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- Step 7: Prisma Client -->
+        <mxCell id="step7" value="&lt;b&gt;7. PRISMA CLIENT&lt;/b&gt;&lt;br&gt;• Gera SQL otimizado&lt;br&gt;• Executa no PostgreSQL&lt;br&gt;• Retorna dados formatados&lt;br&gt;• Gerencia conexões" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="640" y="240" width="160" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- Database -->
+        <mxCell id="database" value="&lt;b&gt;POSTGRESQL DATABASE&lt;/b&gt;&lt;br&gt;(Neon)&lt;br&gt;&lt;br&gt;INSERT INTO clientes&lt;br&gt;(id, nome, email, telefone, endereco,&lt;br&gt; created_at, updated_at)&lt;br&gt;VALUES ('uuid', 'João', 'joao@email.com',&lt;br&gt; NULL, NULL, NOW(), NOW());" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="440" y="400" width="160" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- Response Flow -->
+        <mxCell id="response" value="&lt;b&gt;RESPOSTA&lt;/b&gt;&lt;br&gt;HTTP/1.1 201 Created&lt;br&gt;Content-Type: application/json&lt;br&gt;&lt;br&gt;{&lt;br&gt;  &quot;success&quot;: true,&lt;br&gt;  &quot;data&quot;: {&lt;br&gt;    &quot;id&quot;: &quot;uuid&quot;,&lt;br&gt;    &quot;nome&quot;: &quot;João&quot;,&lt;br&gt;    &quot;email&quot;: &quot;joao@email.com&quot;,&lt;br&gt;    &quot;createdAt&quot;: &quot;2024-01-15T...&quot;&lt;br&gt;  },&lt;br&gt;  &quot;message&quot;: &quot;Cliente criado com sucesso&quot;&lt;br&gt;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="40" y="400" width="160" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- Flow Arrows -->
+        <mxCell id="flow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="client" target="step1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="step1" target="step2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="step2" target="step3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="step3" target="step4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="step4" target="step5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="step5" target="step6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="step6" target="step7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="step7" target="database">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Response Flow (Reverse) -->
+        <mxCell id="response-flow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#82b366;strokeWidth=3;endArrow=block;endFill=1;dashed=1;" edge="1" parent="1" source="database" target="step7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="response-flow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#82b366;strokeWidth=3;endArrow=block;endFill=1;dashed=1;" edge="1" parent="1" source="step7" target="step6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="response-flow3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#82b366;strokeWidth=3;endArrow=block;endFill=1;dashed=1;" edge="1" parent="1" source="step6" target="step5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="response-flow4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#82b366;strokeWidth=3;endArrow=block;endFill=1;dashed=1;" edge="1" parent="1" source="step5" target="step4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="response-flow5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#82b366;strokeWidth=3;endArrow=block;endFill=1;dashed=1;" edge="1" parent="1" source="step4" target="response">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Legend -->
+        <mxCell id="legend" value="&lt;b&gt;LEGENDA&lt;/b&gt;&lt;br&gt;➡️ Fluxo de Requisição&lt;br&gt;🟢 Fluxo de Resposta&lt;br&gt;📝 Logs e Monitoramento" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="640" y="400" width="160" height="80" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

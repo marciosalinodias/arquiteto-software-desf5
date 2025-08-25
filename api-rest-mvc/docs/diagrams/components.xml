@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2024-01-15T10:30:00.000Z" agent="5.0" etag="def456" version="22.1.16" type="device">
+  <diagram name="Component Hierarchy" id="components">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Title -->
+        <mxCell id="title" value="&lt;b&gt;Hierarquia de Componentes - API REST MVC&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="20" width="400" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Base Classes Section -->
+        <mxCell id="base-section" value="&lt;b&gt;BASE CLASSES&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="800" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- BaseModel -->
+        <mxCell id="base-model" value="&lt;b&gt;BaseModel&lt;/b&gt;&lt;br&gt;• findAll()&lt;br&gt;• findById()&lt;br&gt;• create()&lt;br&gt;• update()&lt;br&gt;• delete()&lt;br&gt;• transaction()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="140" width="120" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- BaseService -->
+        <mxCell id="base-service" value="&lt;b&gt;BaseService&lt;/b&gt;&lt;br&gt;• findWithPagination()&lt;br&gt;• validate()&lt;br&gt;• handleError()&lt;br&gt;• processData()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="200" y="140" width="120" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- BaseController -->
+        <mxCell id="base-controller" value="&lt;b&gt;BaseController&lt;/b&gt;&lt;br&gt;• getAll()&lt;br&gt;• getById()&lt;br&gt;• create()&lt;br&gt;• update()&lt;br&gt;• delete()&lt;br&gt;• count()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="360" y="140" width="120" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- Inheritance Arrows -->
+        <mxCell id="inherit1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="base-model" target="cliente-model">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="inherit2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="base-service" target="cliente-service">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="inherit3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="base-controller" target="cliente-controller">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Cliente Components -->
+        <mxCell id="cliente-model" value="&lt;b&gt;ClienteModel&lt;/b&gt;&lt;br&gt;• findByEmail()&lt;br&gt;• findByName()&lt;br&gt;• validateEmail()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="280" width="120" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="cliente-service" value="&lt;b&gt;ClienteService&lt;/b&gt;&lt;br&gt;• emailExists()&lt;br&gt;• createCliente()&lt;br&gt;• updateCliente()&lt;br&gt;• findClientes()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="200" y="280" width="120" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="cliente-controller" value="&lt;b&gt;ClienteController&lt;/b&gt;&lt;br&gt;• getByEmail()&lt;br&gt;• getByName()&lt;br&gt;• getPedidos()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="360" y="280" width="120" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- Produto Components -->
+        <mxCell id="produto-model" value="&lt;b&gt;ProdutoModel&lt;/b&gt;&lt;br&gt;• findByName()&lt;br&gt;• findByCategoria()&lt;br&gt;• findAtivos()&lt;br&gt;• updateEstoque()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="520" y="280" width="120" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="produto-service" value="&lt;b&gt;ProdutoService&lt;/b&gt;&lt;br&gt;• nameExists()&lt;br&gt;• hasStock()&lt;br&gt;• updateEstoque()&lt;br&gt;• toggleStatus()&lt;br&gt;• findProdutos()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="680" y="280" width="120" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="produto-controller" value="&lt;b&gt;ProdutoController&lt;/b&gt;&lt;br&gt;• getByName()&lt;br&gt;• getByCategoria()&lt;br&gt;• getAtivos()&lt;br&gt;• updateEstoque()&lt;br&gt;• toggleStatus()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="520" y="140" width="120" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- Pedido Components -->
+        <mxCell id="pedido-model" value="&lt;b&gt;PedidoModel&lt;/b&gt;&lt;br&gt;• findByCliente()&lt;br&gt;• findByStatus()&lt;br&gt;• create()&lt;br&gt;• addItem()&lt;br&gt;• removeItem()&lt;br&gt;• updateTotal()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="400" width="120" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="pedido-service" value="&lt;b&gt;PedidoService&lt;/b&gt;&lt;br&gt;• validateItens()&lt;br&gt;• createPedido()&lt;br&gt;• addItem()&lt;br&gt;• removeItem()&lt;br&gt;• updateStatus()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="200" y="400" width="120" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="pedido-controller" value="&lt;b&gt;PedidoController&lt;/b&gt;&lt;br&gt;• getByStatus()&lt;br&gt;• getByCliente()&lt;br&gt;• updateStatus()&lt;br&gt;• addItem()&lt;br&gt;• removeItem()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="360" y="400" width="120" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- Additional Inheritance Arrows -->
+        <mxCell id="inherit4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="base-model" target="produto-model">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="inherit5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="base-service" target="produto-service">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="inherit6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="base-controller" target="produto-controller">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="inherit7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="base-model" target="pedido-model">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="inherit8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="base-service" target="pedido-service">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="inherit9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="base-controller" target="pedido-controller">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Legend -->
+        <mxCell id="legend" value="&lt;b&gt;LEGENDA&lt;/b&gt;&lt;br&gt;🟢 Base Classes&lt;br&gt;🔵 Models&lt;br&gt;🟣 Services&lt;br&gt;🔴 Controllers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="680" y="400" width="120" height="100" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

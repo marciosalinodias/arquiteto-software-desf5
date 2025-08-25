@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2024-01-15T10:30:00.000Z" agent="5.0" etag="abc123" version="22.1.16" type="device">
+  <diagram name="API REST MVC Architecture" id="architecture">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Cliente -->
+        <mxCell id="cliente" value="&lt;b&gt;CLIENTE&lt;/b&gt;&lt;br&gt;(Frontend/Mobile)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- HTTP/HTTPS Arrow -->
+        <mxCell id="http-arrow" value="HTTP/HTTPS" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;" edge="1" parent="1" source="cliente" target="api-server">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- API REST MVC Server -->
+        <mxCell id="api-server" value="&lt;b&gt;API REST MVC SERVER&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="20" width="160" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Middlewares -->
+        <mxCell id="middlewares" value="&lt;b&gt;MIDDLEWARES&lt;/b&gt;&lt;br&gt;• CORS&lt;br&gt;• Helmet&lt;br&gt;• Morgan&lt;br&gt;• Rate Limiting&lt;br&gt;• Validation&lt;br&gt;• Sanitization" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="200" y="80" width="120" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- Routes -->
+        <mxCell id="routes" value="&lt;b&gt;ROUTES&lt;/b&gt;&lt;br&gt;• Cliente&lt;br&gt;• Produto&lt;br&gt;• Pedido&lt;br&gt;• Health&lt;br&gt;• Swagger" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="360" y="80" width="120" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- Controllers -->
+        <mxCell id="controllers" value="&lt;b&gt;CONTROLLERS&lt;/b&gt;&lt;br&gt;• BaseController&lt;br&gt;• ClienteController&lt;br&gt;• ProdutoController&lt;br&gt;• PedidoController" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="520" y="80" width="120" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- Services -->
+        <mxCell id="services" value="&lt;b&gt;SERVICES&lt;/b&gt;&lt;br&gt;• BaseService&lt;br&gt;• ClienteService&lt;br&gt;• ProdutoService&lt;br&gt;• PedidoService" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="200" y="200" width="120" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- Models -->
+        <mxCell id="models" value="&lt;b&gt;MODELS&lt;/b&gt;&lt;br&gt;• BaseModel&lt;br&gt;• Cliente&lt;br&gt;• Produto&lt;br&gt;• Pedido" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="360" y="200" width="120" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- Utils -->
+        <mxCell id="utils" value="&lt;b&gt;UTILS&lt;/b&gt;&lt;br&gt;• Prisma Client&lt;br&gt;• Validation&lt;br&gt;• Error Handler&lt;br&gt;• Logging" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="520" y="200" width="120" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- Prisma Client -->
+        <mxCell id="prisma" value="&lt;b&gt;PRISMA CLIENT&lt;/b&gt;&lt;br&gt;ORM Layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="280" y="320" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Database -->
+        <mxCell id="database" value="&lt;b&gt;POSTGRESQL DATABASE&lt;/b&gt;&lt;br&gt;(Neon)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="280" y="420" width="120" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- Flow Arrows -->
+        <mxCell id="flow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;" edge="1" parent="1" source="middlewares" target="services">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;" edge="1" parent="1" source="routes" target="controllers">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;" edge="1" parent="1" source="controllers" target="services">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;" edge="1" parent="1" source="services" target="models">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;" edge="1" parent="1" source="models" target="prisma">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;" edge="1" parent="1" source="prisma" target="database">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Title -->
+        <mxCell id="title" value="&lt;b&gt;API REST MVC - Arquitetura de Alto Nível&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="520" width="280" height="30" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
