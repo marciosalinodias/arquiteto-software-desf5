@@ -1,0 +1,397 @@
+### Testes da API REST MVC - Clientes, Produtos e Pedidos
+
+# ========================================
+# CONFIGURAÇÃO BASE
+# ========================================
+@baseUrl = http://localhost:3000/api/v1
+@contentType = application/json
+
+# ========================================
+# HEALTH CHECK
+# ========================================
+GET {{baseUrl}}/health
+Content-Type: {{contentType}}
+
+###
+
+# ========================================
+# TESTES DE CLIENTES
+# ========================================
+
+# 1. Criar Cliente
+POST {{baseUrl}}/clientes
+Content-Type: {{contentType}}
+
+{
+  "nome": "João Silva",
+  "email": "joao.silva@email.com",
+  "telefone": "(11) 99999-9999",
+  "endereco": "Rua das Flores, 123 - São Paulo/SP"
+}
+
+###
+
+# 2. Criar outro Cliente
+POST {{baseUrl}}/clientes
+Content-Type: {{contentType}}
+
+{
+  "nome": "Maria Santos",
+  "email": "maria.santos@email.com",
+  "telefone": "(11) 88888-8888",
+  "endereco": "Av. Paulista, 1000 - São Paulo/SP"
+}
+
+###
+
+# 3. Listar todos os clientes
+GET {{baseUrl}}/clientes
+Content-Type: {{contentType}}
+
+###
+
+# 4. Listar clientes com paginação
+GET {{baseUrl}}/clientes?skip=0&take=5
+Content-Type: {{contentType}}
+
+###
+
+# 5. Buscar cliente por nome
+GET {{baseUrl}}/clientes/nome/João
+Content-Type: {{contentType}}
+
+###
+
+# 6. Buscar cliente por email
+GET {{baseUrl}}/clientes/email/joao.silva@email.com
+Content-Type: {{contentType}}
+
+###
+
+# 7. Contar clientes
+GET {{baseUrl}}/clientes/count
+Content-Type: {{contentType}}
+
+###
+
+# ========================================
+# TESTES DE PRODUTOS
+# ========================================
+
+# 8. Criar Produto
+POST {{baseUrl}}/produtos
+Content-Type: {{contentType}}
+
+{
+  "nome": "Notebook Dell Inspiron 15",
+  "descricao": "Notebook Dell Inspiron 15 polegadas, Intel i5, 8GB RAM, 256GB SSD",
+  "preco": 2999.99,
+  "estoque": 10,
+  "categoria": "Eletrônicos",
+  "ativo": true
+}
+
+###
+
+# 9. Criar outro Produto
+POST {{baseUrl}}/produtos
+Content-Type: {{contentType}}
+
+{
+  "nome": "Mouse Gamer RGB",
+  "descricao": "Mouse gamer com RGB, 6 botões, 12000 DPI",
+  "preco": 89.90,
+  "estoque": 25,
+  "categoria": "Periféricos",
+  "ativo": true
+}
+
+###
+
+# 10. Listar todos os produtos
+GET {{baseUrl}}/produtos
+Content-Type: {{contentType}}
+
+###
+
+# 11. Listar produtos com filtros
+GET {{baseUrl}}/produtos?categoria=Eletrônicos&ativo=true
+Content-Type: {{contentType}}
+
+###
+
+# 12. Buscar produto por nome
+GET {{baseUrl}}/clientes/nome/Notebook
+Content-Type: {{contentType}}
+
+###
+
+# 13. Listar produtos ativos
+GET {{baseUrl}}/produtos/ativos
+Content-Type: {{contentType}}
+
+###
+
+# 14. Contar produtos
+GET {{baseUrl}}/produtos/count
+Content-Type: {{contentType}}
+
+###
+
+# 15. Atualizar estoque
+PATCH {{baseUrl}}/produtos/{{produtoId}}/estoque
+Content-Type: {{contentType}}
+
+{
+  "quantidade": -2
+}
+
+###
+
+# ========================================
+# TESTES DE PEDIDOS
+# ========================================
+
+# 16. Criar Pedido
+POST {{baseUrl}}/pedidos
+Content-Type: {{contentType}}
+
+{
+  "clienteId": "{{clienteId}}",
+  "itens": [
+    {
+      "produtoId": "{{produtoId}}",
+      "quantidade": 1,
+      "precoUnitario": 2999.99
+    }
+  ],
+  "observacao": "Entregar no período da tarde"
+}
+
+###
+
+# 17. Listar todos os pedidos
+GET {{baseUrl}}/pedidos
+Content-Type: {{contentType}}
+
+###
+
+# 18. Listar pedidos por status
+GET {{baseUrl}}/pedidos/status/PENDENTE
+Content-Type: {{contentType}}
+
+###
+
+# 19. Listar pedidos do cliente
+GET {{baseUrl}}/pedidos/cliente/{{clienteId}}
+Content-Type: {{contentType}}
+
+###
+
+# 20. Atualizar status do pedido
+PATCH {{baseUrl}}/pedidos/{{pedidoId}}/status
+Content-Type: {{contentType}}
+
+{
+  "status": "APROVADO"
+}
+
+###
+
+# 21. Adicionar item ao pedido
+POST {{baseUrl}}/pedidos/{{pedidoId}}/itens
+Content-Type: {{contentType}}
+
+{
+  "produtoId": "{{produtoId2}}",
+  "quantidade": 2,
+  "precoUnitario": 89.90
+}
+
+###
+
+# 22. Contar pedidos
+GET {{baseUrl}}/pedidos/count
+Content-Type: {{contentType}}
+
+###
+
+# ========================================
+# TESTES DE RELACIONAMENTOS
+# ========================================
+
+# 23. Buscar pedidos do cliente
+GET {{baseUrl}}/clientes/{{clienteId}}/pedidos
+Content-Type: {{contentType}}
+
+###
+
+# ========================================
+# TESTES DE VALIDAÇÃO
+# ========================================
+
+# 24. Teste de validação - Email inválido
+POST {{baseUrl}}/clientes
+Content-Type: {{contentType}}
+
+{
+  "nome": "Teste",
+  "email": "email-invalido"
+}
+
+###
+
+# 25. Teste de validação - Preço negativo
+POST {{baseUrl}}/produtos
+Content-Type: {{contentType}}
+
+{
+  "nome": "Produto Teste",
+  "preco": -100
+}
+
+###
+
+# 26. Teste de validação - ID inválido
+GET {{baseUrl}}/clientes/123
+Content-Type: {{contentType}}
+
+###
+
+# ========================================
+# TESTES DE ERROS
+# ========================================
+
+# 27. Buscar cliente inexistente
+GET {{baseUrl}}/clientes/00000000-0000-0000-0000-000000000000
+Content-Type: {{contentType}}
+
+###
+
+# 28. Criar pedido com cliente inexistente
+POST {{baseUrl}}/pedidos
+Content-Type: {{contentType}}
+
+{
+  "clienteId": "00000000-0000-0000-0000-000000000000",
+  "itens": [
+    {
+      "produtoId": "{{produtoId}}",
+      "quantidade": 1,
+      "precoUnitario": 100
+    }
+  ]
+}
+
+###
+
+# ========================================
+# TESTES DE ATUALIZAÇÃO
+# ========================================
+
+# 29. Atualizar cliente
+PUT {{baseUrl}}/clientes/{{clienteId}}
+Content-Type: {{contentType}}
+
+{
+  "nome": "João Silva Atualizado",
+  "email": "joao.atualizado@email.com",
+  "telefone": "(11) 77777-7777"
+}
+
+###
+
+# 30. Atualizar produto
+PUT {{baseUrl}}/produtos/{{produtoId}}
+Content-Type: {{contentType}}
+
+{
+  "nome": "Notebook Dell Inspiron 15 - Atualizado",
+  "preco": 2799.99,
+  "categoria": "Eletrônicos Premium"
+}
+
+###
+
+# ========================================
+# TESTES DE EXCLUSÃO
+# ========================================
+
+# 31. Deletar pedido
+DELETE {{baseUrl}}/pedidos/{{pedidoId}}
+Content-Type: {{contentType}}
+
+###
+
+# 32. Deletar produto
+DELETE {{baseUrl}}/produtos/{{produtoId}}
+Content-Type: {{contentType}}
+
+###
+
+# 33. Deletar cliente
+DELETE {{baseUrl}}/clientes/{{clienteId}}
+Content-Type: {{contentType}}
+
+###
+
+# ========================================
+# TESTES DE PERFORMANCE
+# ========================================
+
+# 34. Teste de paginação grande
+GET {{baseUrl}}/clientes?skip=0&take=100
+Content-Type: {{contentType}}
+
+###
+
+# 35. Teste de filtros complexos
+GET {{baseUrl}}/produtos?categoria=Eletrônicos&ativo=true&skip=0&take=50
+Content-Type: {{contentType}}
+
+###
+
+# ========================================
+# TESTES DE SEGURANÇA
+# ========================================
+
+# 36. Teste de XSS Prevention
+POST {{baseUrl}}/clientes
+Content-Type: {{contentType}}
+
+{
+  "nome": "<script>alert('XSS')</script>",
+  "email": "teste@email.com"
+}
+
+###
+
+# 37. Teste de payload grande
+POST {{baseUrl}}/clientes
+Content-Type: {{contentType}}
+
+{
+  "nome": "A".repeat(10000),
+  "email": "teste@email.com"
+}
+
+###
+
+# ========================================
+# TESTES FINAIS
+# ========================================
+
+# 38. Health check final
+GET {{baseUrl}}/health
+Content-Type: {{contentType}}
+
+###
+
+# 39. Documentação da API
+GET {{baseUrl}}
+Content-Type: {{contentType}}
+
+###
+
+# 40. Swagger UI
+GET http://localhost:3000/api-docs

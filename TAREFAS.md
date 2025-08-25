@@ -42,50 +42,51 @@ Desenvolver uma API REST seguindo padrão MVC para expor dados de Cliente/Produt
 - [x] **T2.5** - Testar estrutura MVC funcionando ✅ **CONCLUÍDA**
 
 ### **FASE 3: Implementação dos Models**
-- [ ] **T3.1** - Definir schema Prisma (Cliente, Produto, Pedido)
-- [ ] **T3.2** - Configurar relacionamentos no Prisma
-- [ ] **T3.3** - Criar migrations do banco de dados
-- [ ] **T3.4** - Implementar Zod schemas para validação
-- [ ] **T3.5** - Configurar Prisma Client
-- [ ] **T3.6** - Testar conexão com banco de dados
+- [x] **T3.1** - Definir schema Prisma (Cliente, Produto, Pedido) ✅ **CONCLUÍDA**
+- [x] **T3.2** - Configurar relacionamentos no Prisma ✅ **CONCLUÍDA**
+- [x] **T3.3** - Criar migrations do banco de dados ✅ **CONCLUÍDA**
+- [x] **T3.4** - Implementar Zod schemas para validação ✅ **CONCLUÍDA**
+- [x] **T3.5** - Configurar Prisma Client ✅ **CONCLUÍDA**
+- [x] **T3.6** - Testar conexão com banco de dados ✅ **CONCLUÍDA**
 
 ### **FASE 4: Implementação dos Services**
-- [ ] **T4.1** - Criar métodos CRUD no ClienteService
-- [ ] **T4.2** - Criar métodos CRUD no ProdutoService
-- [ ] **T4.3** - Criar métodos CRUD no PedidoService
-- [ ] **T4.4** - Implementar lógica de negócio (relacionamentos)
-- [ ] **T4.5** - Implementar tratamento de erros
-- [ ] **T4.6** - Testar services isoladamente
+- [x] **T4.1** - Criar métodos CRUD no ClienteService ✅ **CONCLUÍDA**
+- [x] **T4.2** - Criar métodos CRUD no ProdutoService ✅ **CONCLUÍDA**
+- [x] **T4.3** - Criar métodos CRUD no PedidoService ✅ **CONCLUÍDA**
+- [x] **T4.4** - Implementar lógica de negócio (relacionamentos) ✅ **CONCLUÍDA**
+- [x] **T4.5** - Implementar tratamento de erros ✅ **CONCLUÍDA**
+- [x] **T4.6** - Testar services isoladamente ✅ **CONCLUÍDA**
 
 ### **FASE 5: Implementação dos Controllers**
-- [ ] **T5.1** - Criar endpoints CRUD básicos para Cliente
-- [ ] **T5.2** - Criar endpoints CRUD básicos para Produto
-- [ ] **T5.3** - Criar endpoints CRUD básicos para Pedido
-- [ ] **T5.4** - Implementar validação de entrada
-- [ ] **T5.5** - Configurar respostas HTTP corretas
-- [ ] **T5.6** - Testar endpoints via Postman/Insomnia
+- [x] **T5.1** - Criar endpoints CRUD básicos para Cliente ✅ **CONCLUÍDA**
+- [x] **T5.2** - Criar endpoints CRUD básicos para Produto ✅ **CONCLUÍDA**
+- [x] **T5.3** - Criar endpoints CRUD básicos para Pedido ✅ **CONCLUÍDA**
+- [x] **T5.4** - Implementar validação de entrada ✅ **CONCLUÍDA**
+- [x] **T5.5** - Configurar respostas HTTP corretas ✅ **CONCLUÍDA**
+- [x] **T5.6** - Testar endpoints via Postman/Insomnia ✅ **CONCLUÍDA**
 
 ### **FASE 6: Endpoints Específicos**
-- [ ] **T6.1** - Implementar endpoints de contagem total (Clientes, Produtos, Pedidos)
-- [ ] **T6.2** - Implementar endpoints Find All (Clientes, Produtos, Pedidos)
-- [ ] **T6.3** - Implementar endpoints Find By ID (Clientes, Produtos, Pedidos)
-- [ ] **T6.4** - Implementar endpoints Find By Name (Clientes, Produtos)
-- [ ] **T6.5** - Implementar endpoints específicos de Pedido (por Cliente, por Status)
-- [ ] **T6.6** - Testar todos os endpoints específicos
+- [x] **T6.1** - Implementar endpoints de contagem total (Clientes, Produtos, Pedidos) ✅ **CONCLUÍDA**
+- [x] **T6.2** - Implementar endpoints Find All (Clientes, Produtos, Pedidos) ✅ **CONCLUÍDA**
+- [x] **T6.3** - Implementar endpoints Find By ID (Clientes, Produtos, Pedidos) ✅ **CONCLUÍDA**
+- [x] **T6.4** - Implementar endpoints Find By Name (Clientes, Produtos) ✅ **CONCLUÍDA**
+- [x] **T6.5** - Implementar endpoints específicos de Pedido (por Cliente, por Status) ✅ **CONCLUÍDA**
+- [x] **T6.6** - Testar todos os endpoints específicos ✅ **CONCLUÍDA**
 
 ### **FASE 7: Melhorias e Documentação**
-- [ ] **T7.1** - Adicionar middleware de logging
-- [ ] **T7.2** - Implementar tratamento de erros global
-- [ ] **T7.3** - Adicionar validações de entrada robustas
-- [ ] **T7.4** - Criar documentação da API (README)
-- [ ] **T7.5** - Testes finais de todos os endpoints
+- [x] **T7.1** - Adicionar middleware de logging ✅ **CONCLUÍDA**
+- [x] **T7.2** - Implementar tratamento de erros global ✅ **CONCLUÍDA**
+- [x] **T7.3** - Adicionar validações de entrada robustas ✅ **CONCLUÍDA**
+- [x] **T7.4** - Criar documentação da API (README) ✅ **CONCLUÍDA**
+- [x] **T7.5** - Criar documentação da API (Swagger) ✅ **CONCLUÍDA**
+- [x] **T7.6** - Testes finais de todos os endpoints ✅ **CONCLUÍDA**
 
 ### **FASE 8: Documentação Arquitetural**
-- [ ] **T8.1** - Criar diagrama de arquitetura (UML/C4)
-- [ ] **T8.2** - Documentar estrutura de pastas
-- [ ] **T8.3** - Explicar papel de cada componente
-- [ ] **T8.4** - Criar diagrama de fluxo de dados
-- [ ] **T8.5** - Finalizar documentação completa
+- [x] **T8.1** - Criar diagrama de arquitetura (UML/C4) ✅ **CONCLUÍDA**
+- [x] **T8.2** - Documentar estrutura de pastas ✅ **CONCLUÍDA**
+- [x] **T8.3** - Explicar papel de cada componente ✅ **CONCLUÍDA**
+- [x] **T8.4** - Criar diagrama de fluxo de dados ✅ **CONCLUÍDA**
+- [x] **T8.5** - Finalizar documentação completa ✅ **CONCLUÍDA**
 
 ---
 
@@ -93,17 +94,22 @@ Desenvolver uma API REST seguindo padrão MVC para expor dados de Cliente/Produt
 
 1. ✅ **Escolher Stack Tecnológica** (T1.1) - **NODE.JS/EXPRESS**
 2. ✅ **Definir Entidades** - **CLIENTE, PRODUTO, PEDIDO**
-3. ✅ **Setup Inicial Completo** (T1.2 - T1.5)
+3. ✅ **Setup Inicial Completo** (T1.2 - T1.8) - **CONCLUÍDA**
 4. ✅ **Estrutura MVC Completa** (T2.1 - T2.5) - **CONCLUÍDA**
-5. **Implementar Models** (T3.1 - T3.6)
+5. ✅ **Models Implementados** (T3.1 - T3.6) - **CONCLUÍDA**
+6. ✅ **Services Implementados** (T4.1 - T4.6) - **CONCLUÍDA**
+7. ✅ **Controllers Implementados** (T5.1 - T5.6) - **CONCLUÍDA**
+8. ✅ **Endpoints Específicos** (T6.1 - T6.6) - **CONCLUÍDA**
+9. ✅ **Melhorias e Documentação** (T7.1 - T7.6) - **CONCLUÍDA**
+10. ✅ **Documentação Arquitetural** (T8.1 - T8.5) - **CONCLUÍDA**
 
 ---
 
 ## 📊 Progresso
-- **Total de Tarefas:** 33
-- **Concluídas:** 13
-- **Pendentes:** 20
-- **Progresso:** 39%
+- **Total de Tarefas:** 34
+- **Concluídas:** 34
+- **Pendentes:** 0
+- **Progresso:** 100%
 
 ---
 

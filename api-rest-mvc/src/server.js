@@ -10,16 +10,36 @@ const prisma = require('./utils/prisma');
 // Importar rotas
 const routes = require('./routes');
 
+// Importar middlewares
+const { loggingMiddleware, errorLoggingMiddleware } = require('./middleware/logging');
+const { errorHandler, unhandledErrorHandler } = require('./middleware/errorHandler');
+const { sanitizeInput, validateRateLimit, validatePayloadSize } = require('./middleware/validation');
+
+// Importar Swagger
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpecs = require('./config/swagger');
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
-// Middlewares
+// Configurar tratamento de erros não capturados
+unhandledErrorHandler();
+
+// Middlewares de segurança e parsing
 app.use(helmet()); // Segurança
 app.use(cors()); // CORS
-app.use(morgan('combined')); // Logging
-app.use(express.json()); // Parse JSON
-app.use(express.urlencoded({ extended: true })); // Parse URL-encoded
+app.use(express.json({ limit: '10mb' })); // Parse JSON com limite
+app.use(express.urlencoded({ extended: true, limit: '10mb' })); // Parse URL-encoded
+
+// Middlewares de validação e sanitização
+app.use(sanitizeInput); // Sanitizar dados de entrada
+app.use(validatePayloadSize('10mb')); // Validar tamanho do payload
+app.use(validateRateLimit); // Rate limiting
+
+// Middlewares de logging
+app.use(loggingMiddleware); // Logging personalizado
+app.use(morgan('combined')); // Logging do Morgan
 
 // Rota de teste (raiz)
 app.get('/', (req, res) => {
@@ -39,17 +59,26 @@ app.get('/health', (req, res) => {
   });
 });
 
+// Swagger UI
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs, {
+  customCss: '.swagger-ui .topbar { display: none }',
+  customSiteTitle: 'API REST MVC - Documentação',
+  customfavIcon: '/favicon.ico',
+  swaggerOptions: {
+    docExpansion: 'list',
+    filter: true,
+    showRequestHeaders: true
+  }
+}));
+
 // Usar rotas da API
 app.use(routes);
 
-// Middleware de tratamento de erros
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({
-    error: 'Erro interno do servidor',
-    message: err.message
-  });
-});
+// Middleware de logging de erros
+app.use(errorLoggingMiddleware);
+
+// Middleware de tratamento de erros global
+app.use(errorHandler);
 
 // Middleware para rotas não encontradas
 app.use('*', (req, res) => {
@@ -65,6 +94,7 @@ app.listen(PORT, () => {
   console.log(`🌍 Ambiente: ${NODE_ENV}`);
   console.log(`📡 API disponível em: http://localhost:${PORT}`);
   console.log(`📚 Documentação: http://localhost:${PORT}/api/v1`);
+  console.log(`📖 Swagger UI: http://localhost:${PORT}/api-docs`);
   console.log(`🏥 Health check: http://localhost:${PORT}/health`);
   console.log(`🔄 Nodemon configurado - reiniciando automaticamente`);
   console.log(`\n📋 Endpoints disponíveis:`);
